@@ -1,24 +1,20 @@
 import os
 import time
-# import colorama
-# from colorama import init, Fore, Back, Style
 
-
-stage = 0  # Этап
-language = ('RUS', 'ENG') # Список всевозможных языков
-user_language = [] # Выбранный пользователем язык
+stage = 0  # 
+language = ('RUS', 'ENG') # language list
+user_language = [] # User-selected language
 
 # You can add or remove modules from this list
-modules = ('wheel', 'pandas', 'scipy', 'telebot', 'matplotlib', 'seaborn', 'keras', 'tensorflow', 'statsmodels', 'plotly', 'bokeh', 'spacy', 'gensim', 'nltk', 'dash', 'pygame', 'pillow', 'jmespath', 'requests', 'simplejson', 'emoji', 'dateutil.parser', 'progress', 'tqdm', 'ipython', 'homeassistant', 'flask', 'beautiful', 'discord')
-
+modules = ('absl-py', 'aiohttp', 'altgraph', 'asgiref', 'async-timeout', 'attrs', 'autocommand', 'backcall', 'beautiful', 'blis', 'bokeh', 'Brotli', 'cachetools', 'catalogue', 'certifi', 'chardet', 'charset-normalizer', 'cheroot', 'CherryPy', 'click', 'colorama', 'cycler', 'cymem', 'Cython', 'dash', 'decorator', 'discord', 'Django', 'Flask', 'keras', 'pandas', 'matplotlib', 'pgzero', 'pygame', 'numpy', 'pillow', 'simplejson', 'progress', 'flask')
 RUS = ('Добро пожаловать в Установщик Модулей для Python!\nВ программе ' + str(len(modules)) + ' модулей.', 'Выберите опцию:', '1. Приступить к установке модулей', '2. Помощь', '3. Сменить язык', '4. Выйти', 'Нажмите enter..', 'Данная программа была созданна для простой установки модулей Python.\nВ программе вы можете включить как автоматическую установку всех модулей, так и установить нужные модули вручную.\n', 'Спасибо за использование моей программы!\n','Количество модулей:', 'Выберите тип установки:', '1. Автоматическая установка +обновить pip', '2. Установка модулей вручную', 'Отмена', '2. Обновить pip', 'Все модули установленны!', 'Модуль установлен', 'Pip обновлен!\n', 'Модуль НЕ установлен', 'Установка завершена! Выберите действие:', 'Продолжить установку', 'Вернуться в меню', 'Закрыть программу')
 
 ENG = ('Welcome to the Python Module Installer!\nThe program has ' + str(len(modules)) + ' modules', 'Select option:', '1. Start installing modules', '2. Help', '3. Change language', '4. Exit', 'Press enter..', 'This program was created for easy installation of Python modules.\nIn the program, you can enable automatic installation of all modules, or install the necessary modules manually.\n', 'Thanks for using my program!', 'Number of modules:', 'Select installation type:', '1. Automatic installation +Update pip', '2. Installing modules manually', 'Cancel', '2. Update pip', 'All modules installed!', 'Module installed!', 'Pip updated!\n', 'Error: Module NOT installed', 'Installation completed! Select an action:', 'Continue installation', 'Back to menu', 'Close program')
 
 
-# -------- Функции
+# -------- Functions 
 
-def func_language(): # ----- Функция выбора языка
+def func_language(): # ----- Language selection function
     l = 0
     func_stage = 0
     print('\n\nSelect language:')
@@ -46,7 +42,7 @@ def func_language(): # ----- Функция выбора языка
                     func_stage = 1
                     print('Error: Incorrect Value!\n')
 
-def func_mod_download(): # ----- Функция начала установки модулей
+def func_mod_download(): # ----- Function to start installing modules
     l = 3
     func_stage = 0
     while func_stage == 0:
@@ -59,7 +55,7 @@ def func_mod_download(): # ----- Функция начала установки 
         while func_stage == 0.5:
             select = str(input('->'))
             
-            if select == '1': # --- Автоматическая установка модулей
+            if select == '1': # --- Automatic installation of modules
                 os.system('pip install update')
                 os.system('python.exe -m pip install --upgrade pip')
                 print(user_language[17])
@@ -92,7 +88,7 @@ def func_mod_download(): # ----- Функция начала установки 
                         print('Error: Incorrect Value!\n')
                         func_stage = 1
                 
-            elif select == '2': # --- Установка модулей вручную
+            elif select == '2': # --- Installing modules manually
                 func_stage = 0.7
                 while func_stage == 0.7:
                     print('\n\n')
@@ -198,9 +194,9 @@ def func_mod_download(): # ----- Функция начала установки 
                 print('Error: Incorrect Value!\n')
         
 
-# -------- Начало программы
+# -------- Start of program
 
-# Выбор языка
+# Language selection
 selected_in_func_lang = func_language()
 if selected_in_func_lang == 'ENG':
     user_language = ENG
@@ -208,21 +204,21 @@ elif selected_in_func_lang == 'RUS':
     user_language = RUS
 stage == 0
 
-# -------- Начало программы (Для пользователя)
+# -------- Start of the program (For the user)
 
 while stage == 0:
     print(3 * '\n' + user_language[0])
     stage = 0.5
     while stage == 0.5:
         print(user_language[1])
-        print(user_language[2]) # 1. Приступить к установке модулей
-        print(user_language[3]) # 2. Помощь
-        print(user_language[4]) # 3. Сменить язык
-        print(user_language[5] + '\n') # 4. Выход
+        print(user_language[2]) # 1. Start installing modules
+        print(user_language[3]) # 2. Help
+        print(user_language[4]) # 3. Change language
+        print(user_language[5] + '\n') # 4. Exit
         stage = 1
         while stage == 1:
             menu_select = str(input('->'))
-            if menu_select == '1': # --- 1. Приступить к установке модулей
+            if menu_select == '1': # --- 1. Start installing modules
                 y = func_mod_download()
                 if y == 0:
                     print(user_language[8])
@@ -233,14 +229,14 @@ while stage == 0:
                     stage = 0.5
                     print('\n\n')
     
-            elif menu_select == '2': # --- 2. Помощь
+            elif menu_select == '2': # --- 2. Help
                 print()
                 print(user_language[7])
                 input(user_language[6])
                 print('\n\n')
                 stage = 0.5
     
-            elif menu_select == '3': # --- 3. Сменить язык
+            elif menu_select == '3': # --- 3. Change language
                 print()
                 selected_in_func_lang = func_language()
                 if selected_in_func_lang == 'ENG':
@@ -250,7 +246,7 @@ while stage == 0:
                 print('\n\n')
                 stage = 0.5
     
-            elif menu_select == '4': # --- 4. Выход
+            elif menu_select == '4': # --- 4. Exit
                 print(user_language[8])
                 time.sleep(1.2)
                 stage = 999
